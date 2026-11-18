@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H Island | Geodesic Dome Hotel - Aswan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-sand: #F6F1E9;
+            --card-bg: #FFFFFF;
+            --nile-blue: #0E4D78;
+            --dome-gold: #C49A6C;
+            --dark-brown: #3A2318;
+            --text-muted: #6E5D53;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-sand);
+            background-image: radial-gradient(circle at top, #FDFBF7 0%, var(--bg-sand) 100%);
+            color: var(--dark-brown);
+            font-family: 'Cairo', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 440px;
+            text-align: center;
+        }
+
+        .logo-wrapper {
+            margin-bottom: 28px;
+        }
+
+        .logo-wrapper img {
+            width: 210px;
+            height: auto;
+            border-radius: 16px;
+            /* لو خلفية اللوجو نفس لون الخلفية تقدر تشيل الظل ده */
+            mix-blend-mode: multiply;
+        }
+
+        .welcome-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .links-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--card-bg);
+            color: var(--dark-brown);
+            text-decoration: none;
+            padding: 18px 22px;
+            border-radius: 14px;
+            border: 1px solid rgba(196, 154, 108, 0.4);
+            box-shadow: 0 4px 15px rgba(58, 35, 24, 0.05);
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-btn:hover, .link-btn:active {
+            transform: translateY(-2px);
+            border-color: var(--nile-blue);
+            box-shadow: 0 8px 20px rgba(14, 77, 120, 0.12);
+        }
+
+        .link-btn.primary {
+            background-color: var(--nile-blue);
+            color: #FFFFFF;
+            border-color: var(--nile-blue);
+        }
+
+        .link-btn.primary .subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-content {
+            text-align: right;
+        }
+
+        .btn-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .subtitle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .btn-icon {
+            font-size: 1.4rem;
+            color: var(--dome-gold);
+        }
+
+        .link-btn.primary .btn-icon {
+            color: #FFFFFF;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        footer span {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: block;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-wrapper">
+            <!-- تأكد من مطابقة اسم صورة الشعار هنا -->
+            <img src="logo.png" alt="H Island Geodesic Dome Hotel">
+        </div>
+
+        <p class="welcome-text">
+            أهلاً بكم في جزيرة إتش — تجربة إقامة فريدة على ضفاف النيل في أسوان
+        </p>
+
+        <div class="links-group">
+            <!-- الرابط الأول: المنيو -->
+            <a href="menu.html" class="link-btn primary">
+                <div class="btn-content">
+                    <span class="btn-title">قائمة الطعام والمشروبات</span>
+                    <span class="subtitle">RESTAURANT & CAFE MENU</span>
+                </div>
+                <span class="btn-icon">🍽️</span>
+            </a>
+
+            <!-- الرابط الثاني: الموقع الرسمي (عدّل الرابط مكان #) -->
+            <a href="https://example.com" target="_blank" class="link-btn">
+                <div class="btn-content">
+                    <span class="btn-title">الموقع الرسمي للفندق والحجز</span>
+                    <span class="subtitle">OFFICIAL WEBSITE & BOOKING</span>
+                </div>
+                <span class="btn-icon">🌐</span>
+            </a>
+
+            <!-- الرابط الثالث: موقع إضافي أو السبا/الأنشطة (عدّل الرابط مكان #) -->
+            <a href="https://example.com" target="_blank" class="link-btn">
+                <div class="btn-content">
+                    <span class="btn-title">المنتجع الصحي والأنشطة النيلية</span>
+                    <span class="subtitle">SPA & NILE EXPERIENCES</span>
+                </div>
+                <span class="btn-icon">✨</span>
+            </a>
+        </div>
+
+        <footer>
+            نشكركم لزيارتكم
+            <span>H ISLAND • ASWAN, EGYPT</span>
+        </footer>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | H Island Hotel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-sand: #F6F1E9;
+            --card-bg: #FFFFFF;
+            --nile-blue: #0E4D78;
+            --dome-gold: #C49A6C;
+            --dark-brown: #3A2318;
+            --text-muted: #6E5D53;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-sand);
+            color: var(--dark-brown);
+            font-family: 'Cairo', sans-serif;
+            padding-bottom: 40px;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(196, 154, 108, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            gap: 8px;
+        }
+
+        .back-btn {
+            background: var(--bg-sand);
+            border: 1px solid var(--dome-gold);
+            color: var(--dark-brown);
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 4px;
+            background: var(--bg-sand);
+            padding: 3px;
+            border-radius: 20px;
+            border: 1px solid rgba(196, 154, 108, 0.4);
+        }
+
+        .lang-option {
+            background: transparent;
+            border: none;
+            color: var(--dark-brown);
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            transition: 0.2s;
+        }
+
+        .lang-option.active {
+            background-color: var(--nile-blue);
+            color: #FFFFFF;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 14px 16px;
+            background-color: var(--bg-sand);
+            position: sticky;
+            top: 57px;
+            z-index: 90;
+            scrollbar-width: none;
+        }
+        .tabs::-webkit-scrollbar { display: none; }
+
+        .tab-btn {
+            background-color: var(--card-bg);
+            color: var(--dark-brown);
+            border: 1px solid rgba(196, 154, 108, 0.4);
+            padding: 8px 18px;
+            border-radius: 25px;
+            white-space: nowrap;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .tab-btn.active {
+            background-color: var(--nile-blue);
+            color: #FFFFFF;
+            border-color: var(--nile-blue);
+        }
+
+        .menu-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .category-section {
+            margin-top: 20px;
+        }
+
+        .category-title {
+            font-size: 1.25rem;
+            color: var(--nile-blue);
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--dome-gold);
+            display: inline-block;
+        }
+
+        .item-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(196, 154, 108, 0.25);
+            box-shadow: 0 2px 8px rgba(58, 35, 24, 0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .item-info h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: var(--dark-brown);
+        }
+
+        .item-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .item-price {
+            background-color: var(--bg-sand);
+            color: var(--nile-blue);
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 8px;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            border: 1px solid rgba(196, 154, 108, 0.4);
+        }
+
+        .tax-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="back-btn" id="backText">← الرئيسية</a>
+        <div class="lang-switcher">
+            <button class="lang-option active" onclick="setLang('ar', this)">عربي</button>
+            <button class="lang-option" onclick="setLang('en', this)">EN</button>
+            <button class="lang-option" onclick="setLang('fr', this)">FR</button>
+            <button class="lang-option" onclick="setLang('es', this)">ES</button>
+        </div>
+    </header>
+
+    <div class="tabs" id="categoryTabs"></div>
+    <div class="menu-container" id="menuContainer"></div>
+    <p class="tax-note" id="taxNote"></p>
+
+    <script src="menu-data.js"></script>
+    <script>
+        let currentLang = 'ar';
+
+        function setLang(lang, btnEl) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-option').forEach(b => b.classList.remove('active'));
+            btnEl.classList.add('active');
+            renderMenu();
+        }
+
+        function renderMenu() {
+            const tabsEl = document.getElementById('categoryTabs');
+            const containerEl = document.getElementById('menuContainer');
+            const uiText = menuData.ui[currentLang];
+
+            tabsEl.innerHTML = '';
+            containerEl.innerHTML = '';
+
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('backText').textContent = uiText.back;
+            document.getElementById('taxNote').textContent = uiText.tax;
+
+            menuData.categories.forEach((cat, index) => {
+                const btn = document.createElement('button');
+                btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
+                btn.textContent = cat.name[currentLang];
+                btn.onclick = () => {
+                    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    document.getElementById(`cat-${cat.id}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                };
+                tabsEl.appendChild(btn);
+
+                const section = document.createElement('div');
+                section.className = 'category-section';
+                section.id = `cat-${cat.id}`;
+                section.style.scrollMarginTop = '120px';
+
+                let itemsHTML = `<h2 class="category-title">${cat.name[currentLang]}</h2>`;
+                cat.items.forEach(item => {
+                    itemsHTML += `
+                        <div class="item-card">
+                            <div class="item-info">
+                                <h3>${item.name[currentLang]}</h3>
+                                <p>${item.desc[currentLang]}</p>
+                            </div>
+                            <div class="item-price">${item.price} ${uiText.currency}</div>
+                        </div>
+                    `;
+                });
+
+                section.innerHTML = itemsHTML;
+                containerEl.appendChild(section);
+            });
+        }
+
+        renderMenu();
+    </script>
+</body>
+</html>
